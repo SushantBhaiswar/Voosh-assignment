@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import "./dashboard.css"
 axios.defaults.withCredentials = true;
+import { SERVER_URI } from "./config/keys"
 
 export default function Dashboard() {
 
@@ -12,11 +13,11 @@ export default function Dashboard() {
     const [total, setTotal] = useState(0)
     const location = useLocation()
     const getdata = async () => {
-         await axios.get(`http://localhost:3001/get-order/${location.state.userdetails._id}`, {
+        await axios.get(`${SERVER_URI}/get-order/${location.state.userdetails._id}`, {
             withCredentials: true,
         })
             .then((res) => {
-                // console.log(res.data);
+               
                 if (res.status === 200) {
                     setOrderata(res.data.finduser)
                     setTotal(res.data.total)
@@ -28,8 +29,8 @@ export default function Dashboard() {
         getdata()
     }, [])
     const submit = () => {
-        console.log(sub_total);
-        axios.post("http://localhost:3001/add-order", {
+        
+        axios.post(`${SERVER_URI}/add-order`, {
             sub_total
         }).then((res) => {
             if (res.status === 200) {
