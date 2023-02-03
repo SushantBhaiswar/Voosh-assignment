@@ -1,0 +1,82 @@
+.main-box {
+    display: flex;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.main-box .left-box {
+    width: 270px;
+    height: 320px;
+    border-radius: 1px;
+    box-shadow: 0 0 10px -2px black;
+    margin-left: 35px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-box .left-box h5 {
+    font-size: large;
+    margin-bottom: 5px;
+    margin-top: -25px;
+}
+
+.main-box .left-box input {
+    display: block;
+    margin-left: 56px;
+    height: 25px;
+    width: 160px;
+    border-radius: 4px;
+}
+
+.main-box .left-box button {
+    height: 25px;
+    width: 100px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: rgb(50, 78, 139);
+    text-align: center;
+    font-weight: bold;
+    color: antiquewhite;
+    border: 0;
+}
+
+.main-box .left-box button :hover {
+    background-color: rgb(3, 3, 3);
+
+}
+
+.main-box .right-box {
+    width: 70%;
+    height: auto;
+    border-radius: 1px;
+    margin-left: 25px;
+    box-shadow: 0 0 10px -2px black;
+}
+
+.main-box .right-box .box-containt {
+    text-align: start;
+    margin-left: 150px;
+    margin-top: 50px;
+}
+
+.main-box .right-box h3 {
+    margin-top: 20px;
+}
+
+.order-box {
+    width: 900px;
+    padding: 35px;
+    margin-left: 200px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.order-box .order-data {
+    width: 700px;
+    height: 80px;
+    box-shadow: 0 0 10px -2px rgb(0, 0, 0);
+    margin-top: 25px;
+    margin-left: 50px;
+    /* background-color: brown; */
+    padding: 20px;
+}
