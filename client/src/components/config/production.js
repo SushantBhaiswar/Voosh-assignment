@@ -1,3 +1,3 @@
 module.exports = {
-    SERVER_URI: "https://voosh-assignment/1.vercel.app"
+    SERVER_URI: "https://voosh_assignment/1.vercel.app"
 }
