@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import "./dashboard.css"
-axios.defaults.withCredentials = true;
 import { SERVER_URI } from "./config/keys"
+axios.defaults.withCredentials = true;
 
 export default function Dashboard() {
 
