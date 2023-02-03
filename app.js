@@ -17,7 +17,21 @@ app.use(Cookiparser())
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json())
 app.use("/", Router)
+if (process.env.NODE_ENV == 'production') {
+    const path = require('path')
+    app.use(express.static(path.join(__dirname, "../client/build")));
 
+    app.get("*", function (_, res) {
+        res.sendFile(
+            path.join(__dirname, "../client/build/index.html"),
+            function (err) {
+                if (err) {
+                    res.status(500).send(err)
+                }
+            }
+        )
+    })
+}
 app.listen(3001, () => {
     console.log("Express app is running on port 3001");
 })
