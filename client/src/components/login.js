@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import { SERVER_URI } from "./config/keys"
+
 
 export default function Login() {
     let history = useNavigate()
@@ -28,18 +28,22 @@ export default function Login() {
         else if (!password)
             toast.error("password is required !")
         else {
-            let res = await axios.post(`${SERVER_URI}/login`, inpval)
+            console.log(inpval);
+            await axios.post(`http://localhost:3001/login`, inpval)
+                .then((res) => {
+                    if (res.status === 200) {
+                        console.log(res.data);
+                        toast.success("Login successfully")
+                        localStorage.setItem("userdatatoken", res.data.token,)
+                        history("/dash", { state: { userdetails: res.data.finduser } })
+                        // window.location.reload()
+                    }
+                })
                 .catch((err) => {
                     toast.error(err.response.data);
                 })
-            // console.log(res);
-            if (res.status === 200) {
-                console.log(res.data);
-                toast.success("Login successfully")
-                localStorage.setItem("userdatatoken", res.data.token,)
-                history("/dash", { state: { userdetails: res.data.finduser } })
-                // window.location.reload()
-            }
+    
+
         }
     }
     return (

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import "./dashboard.css"
-import { SERVER_URI } from "./config/keys"
+
 axios.defaults.withCredentials = true;
 
 export default function Dashboard() {
@@ -13,7 +13,7 @@ export default function Dashboard() {
     const [total, setTotal] = useState(0)
     const location = useLocation()
     const getdata = async () => {
-        await axios.get(`${SERVER_URI}/get-order/${location.state.userdetails._id}`, {
+        await axios.get(`http://localhost:3001/get-order/${location.state.userdetails._id}`, {
             withCredentials: true,
         })
             .then((res) => {
@@ -30,7 +30,7 @@ export default function Dashboard() {
     }, [])
     const submit = () => {
         
-        axios.post(`${SERVER_URI}/add-order`, {
+        axios.post(`http://localhost:3001/add-order`, {
             sub_total
         }).then((res) => {
             if (res.status === 200) {

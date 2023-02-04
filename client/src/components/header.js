@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom"
 import { useState } from "react";
-import { SERVER_URI } from "./config/keys"
+
 export default function Header() {
     let token = localStorage.getItem("userdatatoken");
 
@@ -21,7 +21,7 @@ export default function Header() {
     };
 
     const Logout = async () => {
-        axios.post(`${SERVER_URI}/logout`)
+        axios.post(`http://localhost:3001/logout`)
             .then((res) => {
                 if (res.status === 200) {
                     localStorage.removeItem("userdatatoken")
@@ -55,13 +55,6 @@ export default function Header() {
                         {
                             token ? (
                                 <>
-                                    {/* <MenuItem onClick={() => {
-                                        const goDash = () => {
-                                            history("/dash")
-                                        }
-                                        goDash()
-                                        handleClose()
-                                    }}>Profile</MenuItem> */}
                                     <MenuItem onClick={() => {
                                         Logout()
                                         handleClose()

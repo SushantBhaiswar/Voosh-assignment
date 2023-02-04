@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import "./mix.css"
 import { toast, ToastContainer } from 'react-toastify'
 import axios from 'axios';
-import { SERVER_URI } from "./config/keys"
+
 export default function Register() {
     const history = useNavigate()
     const [showpass, setShowpass] = useState(false)
@@ -54,7 +54,7 @@ export default function Register() {
             });
         } else {
             console.log(inpval);
-            let res = await axios.post(`${SERVER_URI}/register`, inpval)
+            let res = await axios.post(`http://localhost:3001/register`, inpval)
                 .catch((err) => {
                     toast.error(err.response.data)
                     console.log(err);
