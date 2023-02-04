@@ -4,6 +4,7 @@ const app = express()
 const Router = require("./route")
 const cors = require("cors")
 const Cookiparser = require("cookie-parser")
+import { SERVER_URI } from "../Voosh-assignment/client/src/components/config/keys"
 
 mongoose.set('strictQuery', true)
 mongoose.connect("mongodb+srv://Sushant_Bhaiswar_30:WBYUu1bCYmxmZUmg@cluster0.jui41on.mongodb.net/sample-db?retryWrites=true&w=majority")
@@ -14,7 +15,7 @@ mongoose.connect("mongodb+srv://Sushant_Bhaiswar_30:WBYUu1bCYmxmZUmg@cluster0.ju
         console.log(err.message);
     })
 app.use(Cookiparser())
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: SERVER_URI }));
 app.use(express.json())
 app.use("/", Router)
 if (process.env.NODE_ENV == 'production') {
